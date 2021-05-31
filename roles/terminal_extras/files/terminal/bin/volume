@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Really simple volume change utility from the command line.
+# Essentially useless, but it's here because of: http://xkcd.com/530/
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then 
+cat <<EOH
+Sound Control
+http://sunspar.net
+Usage: $(basename "$0") <volume percentage>
+
+Raises the system volume to the argument provided. Defaults to 100% if not given a specific amount..
+
+Supported Operating Systems:
+- Macintosh OS X
+- Debian Linux (through ALSA)
+EOH
+exit; 
+fi
+
+# values of zero cause -z to return false, so if its "set" or the value is actually zero, use the argument
+if [ -z $1 ] || [ "$1" -ge 0 ]; then
+  volume=$1
+else
+  volume=100
+fi
+
+case $(uname) in
+  Darwin)
+    osascript -e 'set volume output volume $1'
+    ;;
+  Linux)
+    amixer sset 'Master' "$1"%
+    ;;
+  *)
+    echo '[ERROR] Operating system is not currently supported. Your OS is:' $(uname)
+    exit 1;
+    ;;
+esac

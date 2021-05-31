@@ -1,0 +1,8 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - exfat-utils                 # exFAT filesystem support
+      - ntfs-3g                     # NTFS filesystem support
+      - trash-cli                   # command-line trash/recycle bin support
+      - thunar                      # Graphical file management

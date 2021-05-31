@@ -1,0 +1,15 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - gnome-keyring
+- name: Setup pam.d login file
+  ansible.builtin.copy:
+    src: pamd-login
+    dest: /etc/pam.d/login
+  become: yes
+- name: Setup pam.d passwd file
+  ansible.builtin.copy:
+    src: pamd-passwd
+    dest: /etc/pam.d/passwd
+  become: yes

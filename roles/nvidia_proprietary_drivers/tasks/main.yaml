@@ -1,0 +1,6 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - nvidia
+      - nvidia-settings

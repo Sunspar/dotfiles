@@ -1,0 +1,17 @@
+#------------------------------------------------------------------------------
+# Encodes strings as UTF8 characters.
+#
+# Params:
+#   - $@: The text to encode.
+# Examples:
+# ❯ escape "hello there"
+# \x68\x65\x6C\x6C\x6F\x20\x74\x68\x65\x72\x65
+#------------------------------------------------------------------------------
+
+function utf8escape() {
+	printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u);
+	# print a newline unless we’re piping the output to another program
+	if [ -t 1 ]; then
+		echo ""; # newline
+	fi;
+}

@@ -1,0 +1,7 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - netctl
+      - iw
+      - wpa_supplicant

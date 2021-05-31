@@ -1,0 +1,17 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - xorg-xrandr                 # Display management
+      - arandr                      # GUI management for displays
+      - xorg-server                 # Xorg display server
+      - xorg-xwininfo               # CLI for X server window information
+      - xorg-xinit                  # Xorg initialization program
+      - xorg-xprop                  # Property displayer for X
+      - xorg-xdpyinfo               # Display information utility for X
+      - xorg-xbacklight             # RandR-based backlight control for X
+      - xorg-xsetroot               # Lets us configure the cursor for X
+      - xclip                       # CLI for the X11 clipboard
+      - xdotool                     # CLI X11 automation tool
+      - xwallpaper                  # Wallpaper setting utility for X
+      - xdg-utils                   # Provides xdg-open and friends (You'll want to symlink this to something like /usr/local/bin/open)

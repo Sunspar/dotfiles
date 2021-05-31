@@ -1,0 +1,7 @@
+function yeet-orphans() {
+  if [[ ! -n $(pacman -Qdtq)  ]]; then
+    echo "No orphans!"
+  else
+    yay -Rns $(pacman -Qdtq)
+  fi
+}

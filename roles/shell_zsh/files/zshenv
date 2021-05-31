@@ -1,0 +1,2 @@
+# look in the right place for the configuration, don't clutter up ~.
+export ZDOTDIR=~/.config/zsh

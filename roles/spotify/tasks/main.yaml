@@ -1,0 +1,29 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - spotify
+      - spotifyd
+      - spotify-tui
+- name: Ensure user's systemd folder exists
+  ansible.builtin.file:
+    path: ${HOME}/.config/systemd/user/
+    state: directory
+- name: Create spotifyd daemon file for systemd
+  ansible.builtin.copy:
+    src: spotifyd.service
+    dest: ${HOME}/.config/systemd/user/spotifyd.service
+- name: Ensure user's spotifyd config folder exists
+  ansible.builtin.file:
+    path: ${HOME}/.config/spotifyd/
+    state: directory
+- name: Copy configuration file
+  ansible.builtin.copy:
+    src: spotifyd.conf
+    dest: ${HOME}/.config/spotifyd/spotifyd.conf
+- name: Reload systemd so service is available
+  ansible.builtin.command:
+    cmd: systemctl --user daemon-reload
+- name: Start spotifyd on login
+  ansible.builtin.command:
+    cmd: systemctl --user enable --now spotifyd

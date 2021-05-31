@@ -1,0 +1,22 @@
+---
+- name: Install font packages
+  aur:
+    name: 
+      - ttf-font-awesome
+      - ttf-anonymous-pro
+      - noto-fonts
+      - adobe-source-code-pro-fonts
+      - ttf-inconsolata
+      - ttf-linux-libertine
+      - ttf-unifont
+- name: copy fontconfig dir
+  ansible.builtin.copy:
+    src: fontconfig/
+    dest: ${HOME}/.config/fontconfig/
+- name: copy font files
+  ansible.builtin.copy:
+    src: fonts/
+    dest: ${HOME}/.local/share/fonts/
+- name: reset font cache
+  ansible.builtin.command:
+    cmd: fc-cache -f -v

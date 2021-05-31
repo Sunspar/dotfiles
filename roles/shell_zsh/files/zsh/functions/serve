@@ -1,0 +1,6 @@
+function serve() {
+  python3 -m http.server "$1"
+
+  # If you only have access to python 2, you can use this instead:
+  # python2 -m SimpleHTTPServer "$1"
+}

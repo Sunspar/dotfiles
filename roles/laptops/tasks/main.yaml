@@ -1,0 +1,7 @@
+---
+- name: Install packages
+  aur:
+    name:
+      - lm_sensors
+      - tlp
+      - tlp-rdw

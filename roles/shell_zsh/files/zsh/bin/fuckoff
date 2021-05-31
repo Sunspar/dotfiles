@@ -1,0 +1,34 @@
+#! /usr/bin/env zsh
+
+# Fuckoff -- for when you want applications to just die already.
+#
+# Born out of a deep hatred of Teams, which refuses to actually fully quit on my machine.
+# Normally I end up having to run pidof a few times and killing the new sub processes that
+# spawn until it finally goes away -- this helper saves me that headache by recursively
+# instructing every process related to an identifier to piss off.
+#
+# This can be used generally to kill applications by name if you know it. We use xargs
+# to allow any arbitrarily long list of identifiers to be passed in (although we aren't
+# likely in practice to hit the argument limit anyway.)
+#
+# Example:
+# > pidof teams
+# 12414 12593 13135
+#
+# > fuckoff teams
+# > pidof teams
+# <blank line indicating silence.>
+
+# Set some friendlier names from positional arguments.
+identifier=$1
+signal=${2:--9}
+
+# Gather process ids for killing
+process_ids=$(pidof $identifier)
+
+# Kill them all!
+# For PIDs since the structure is predictable we can just run an echo and let xargs' default of whitespace separation do the work for us.
+echo "${process_ids}" | xargs kill "${signal}"
+
+# Generally, I prefer to do null tokenization with xargs as the output is more controlled -- everything is treated literally, whitespace is permitted -- and so this option works as well albeit more complicated to read.
+# printf '%s\0' ${process_ids} | xargs --null kill ${signal}

@@ -1,0 +1,13 @@
+#! /usr/bin/env ruby
+
+# stoyaml: Intelligently parse string-encoded yaml document into its natural representation 
+#
+# Simple little script that accepts some standard input and parses it and outputs a well-formed
+# YAML document equivalent to the input. Useful when dealing with scripts that spit out stringified
+# data and you just want to tweak it easily.
+
+require 'yaml'
+
+raw_content = STDIN.read
+yaml_content = YAML.safe_load raw_content
+puts YAML.dump yaml_content

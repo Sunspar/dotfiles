@@ -1,0 +1,5 @@
+---
+- name: Copy configuration
+  ansible.builtin.copy:
+    src: terminal/
+    dest: ${HOME}/.terminal/

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# For details checkout: https://bitcointalk.org/index.php?topic=2647654.0
+
+sudo ethdcrminer64 \
+	-coin eth \
+	-pool ssl://us1.ethermine.org:5555 \
+	-wal 0x84310653c36d9bF3eed15810b329cb7e1FB83830 \
+	-worker NODE001 \
+	-amd \
+	-acm \
+	-tt 70
+	#-mi 4 \
+	#-gpow 50 \

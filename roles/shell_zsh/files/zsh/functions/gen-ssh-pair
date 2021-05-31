@@ -1,0 +1,11 @@
+# Function: gen-ssh-pair(file_name)
+#
+# Quickly generates a standard SSH key and pushes out the public key. Mainly useful for when
+#   I want to quickly generate a new SSH key for a server and pass it along (e.g cloud vms).
+
+function gen-ssh-pair() {
+  local file_name=$1
+  local path="${HOME}/.ssh/${file_name}"
+
+  ssh-keygen -t ed25519 -f "${path}" -q -N ""
+}

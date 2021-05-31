@@ -1,0 +1,20 @@
+---
+# Copy zshenv
+# Copy zsh under config
+# change shell to zsh
+- name: Install packages
+  aur:
+    name: zsh
+- name: Copy zshenv file
+  ansible.builtin.copy:
+    src: zshenv
+    dest: ${HOME}/.zshenv
+- name: Copy zsh directory
+  ansible.builtin.copy:
+    src: zsh/
+    dest: ${HOME}/.config/zsh/
+# TODO: Figure out why this command silently fails without actually changing the shell
+# - name: Set ZSH as the default shell
+#   ansible.builtin.command:
+#     cmd: chsh -s /usr/bin/zsh
+    

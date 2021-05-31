@@ -1,0 +1,9 @@
+# Function: killport ( port_number )
+#
+# Kills whatever process is currently listening on the given port number.
+
+function killport() {
+  local port_number=$1
+  local pid=$(lsof -i TCP:"${port_number}" | grep '(LISTEN)' | awk '{print $2}')
+  [[ -n "${pid}" ]] && kill -9 "${pid}"
+}

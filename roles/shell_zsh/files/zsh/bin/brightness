@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+
+# Brightness management script for CLI brightness changing
+# Supports "up x%", "down x%",
+
+#current_file="/home/sunspar/brightness-test"
+current_file=/sys/class/backlight/intel_backlight/brightness 
+max_file="/sys/class/backlight/intel_backlight/max_brightness"
+instruction=$1
+amount=$2
+max_value=$(cat $max_file)
+current_value=$(cat $current_file)
+
+case $instruction in
+  up)
+    (( NEW = current_value + max_value * amount / 100 ))
+    new_value=$(printf "%d" "$NEW")
+    [ "$new_value" -gt "$max_value" ] && new_value=$max_value
+    ;;
+  down)
+    (( NEW = current_value -  max_value * amount / 100 ))
+    (( LOW = 0.1 * max_value ))
+    new_value=$(printf "%d" "$NEW")
+    lower_limit=$(printf "%d" "$LOW")
+    [ "$new_value" -lt "$lower_limit" ] && new_value=$lower_limit
+    ;;
+  set)
+    (( VAL = max_value * amount / 100 ))
+    (( LOWER = 0.1 * max_value ))
+    new_value=$(printf "%d" "$VAL")
+    lower_limit=$(printf "%d" "$LOWER")
+    [ "$new_value" -lt "$lower_limit" ] && new_value=$lower_limit
+    [ "$new_value" -gt "$max_value" ] && new_value=$max_value
+esac
+
+sudo echo "$new_value" > $current_file

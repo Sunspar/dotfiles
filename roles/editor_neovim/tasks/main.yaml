@@ -1,0 +1,8 @@
+---
+- name: Install package
+  aur:
+    name: neovim
+- name: Copy configuration
+  ansible.builtin.copy:
+    src: neovim/
+    dest: ${HOME}/.config/neovim/

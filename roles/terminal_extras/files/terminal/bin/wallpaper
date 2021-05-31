@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# Requires:
+# wal           for setting the wallpapers
+# notify-send   for the visual notification
+local file=$1
+ln -sfn "${file}" "${HOME}/.config/current-wallpaper"
+wal -c
+wal -i "${HOME}/.config/current-wallpaper"
+notify-send "wallpaper and color scheme updated"

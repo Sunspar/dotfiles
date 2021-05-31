@@ -1,0 +1,8 @@
+---
+- name: Install package
+  aur:
+    name: kitty
+- name: Copy configuration
+  ansible.builtin.copy:
+    src: kitty/
+    dest: ${HOME}/.config/kitty/

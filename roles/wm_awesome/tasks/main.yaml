@@ -1,0 +1,15 @@
+---
+- name: install packages
+  aur:
+    name:
+      - awesome-git
+      - rofi
+      - picom
+- name: copy awesome config
+  copy:
+    src: awesome/
+    dest: ${HOME}/.config/awesome/
+- name: Copy rofi config
+  ansible.builtin.copy:
+    src: rofi/
+    dest: ${HOME}/.config/rofi/

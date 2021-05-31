@@ -1,0 +1,59 @@
+[user]
+	name = Andrew Turner
+	email = aturner@shorecg.com
+[alias]
+  rmtag = "!sh -c 'git tag -d $1; git push origin :refs/tags/$1'"
+  st = status
+  ci = commit --verbose
+  di = diff
+  dc = diff --cached
+  aa = add --all
+  ff = merge --ff-only
+  pullff = pull --ff-only
+  noff = merge --no-ff
+  fa = fetch --all
+  pom = push origin master
+  b = branch
+  ds = diff --stat=160,120
+  # Go to a branch, creating it if you need to
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  # Show me a graph without all the typing
+  graph = log --graph
+  # Amend the previous commit
+  amend = commit --amend
+  # Toss everything out.
+  discard = reset --hard HEAD
+  # List various things
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
+  contributors = shortlog --summary --numbered
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold # line info
+  old = red # deletions
+  new = green # additions
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+  default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[core]
+	excludesfile = /home/sunspar/.gitignore_global
+  
+[pull]
+	rebase = false
