@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local
   roles:
+    - mongodb
+    - picom
     - audio
     - spotify
     - security
@@ -22,50 +24,29 @@
         src: /run/systemd/resolve/stub-resolv.conf
         dest: /etc/resolv.conf
         state: link
+
     - name: Install unsorted software
       aur:
         name:
-          - discord-canary              # The b # - security
-          - x11
-          - wm_awesome
-          - fonts
-          - shell_zsh
-          - terminal_kitty
-          - vc_git
-          - terminal_extras
-          - editor_neovim
-
-          - discord-canary              #
           - slack-desktop               # slack client for linux
-
           - firefox                     # Firefox browser
           - google-chrome               # Chrome browser
-
           - gparted                     # partition manager
           - htop                        # Improved system resource management from a terminal
-
           - jdk-openjdk                 # Java development kit
           - android-sdk                 # Android development toolkit
           - android-sdk-build-tools     # build tools for android SDK
           - android-sdk-platform-tools  #
           - android-emulator            #
           - android-platform            #
-
-          - mongodb-bin                 # NoSQL database server
-          - mongodb-tools-bin           # client-side MongoDB tooling
-          - mongodb-compass             # GUI interface for working with MongoDB
           - mariadb                     # MySQL-compatible alternative
           - postgresql                  # PostgreSQL database server software
-
           - plymouth                    # Splash screen functionality on boot
           - feh                         # CLI based wallpaper tool
           - sddm                        # simple desktop manager (login screen)
-          - nnn                         # Really lightweight terminal file browser
           - openvpn                     # OpenVPN client
           - gnu-netcat                  # Provides GNU's NetCat util. (alternatively: openbsd-netcat
-          - 1password-cli               # 1Password CLI tool
           - obs-studio                  # Screencast/streaming software
-
           - fzf                         # The #1 fuzzy finder
           - highlight                   #
           - task-spooler                #
@@ -73,13 +54,5 @@
           - wget                        #
           - curl                        #
           - flameshot
-
           - emacs                       # The operating system with a built-in text editor!
           - visual-studio-code-bin      # The official VS Code builds from MS
-        
-# TODO: ASDF role
-# TODO: Programming language roles
-# TODO: Categorize remaining apps
-# TODO: First-time setup for mariadb, postgres, apache, php
-
-# # TODO: Install GPG key for 1Password CLI: 3FEF9748469ADBE15DA7CA80AC2D62742012EA22

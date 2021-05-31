@@ -1,10 +1,10 @@
 ---
 - name: install packages
-  aur:
-    name:
-      - awesome-git
-      - rofi
-      - picom
+  yay:
+    packages:
+      - awesome-git                     #
+      - rofi                            #
+      - picom                           #
 - name: copy awesome config
   copy:
     src: awesome/

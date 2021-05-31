@@ -1,7 +1,7 @@
 ---
 - name: Install packages
-  aur:
-    name:
-      - lm_sensors
-      - tlp
-      - tlp-rdw
+  yay:
+    packages:
+      - lm_sensors                      # laptop thermal sensors
+      - tlp                             #
+      - tlp-rdw                         #

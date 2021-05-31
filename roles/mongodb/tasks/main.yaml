@@ -1,0 +1,29 @@
+- name: Install packages
+  yay:
+    packages:
+      - mongodb-bin                     # MongoDB server
+      - mongodb-tools-bin               # MongoDB client application and interaction tooling
+      - mongodb-compass                 # database browser and visualizer
+- name: Copy configuration files
+  become: yes
+  ansible.builtin.copy:
+    src: mongodb.conf
+    dest: /etc/mongod.conf
+- name: Make sure home folder exists for mongodb user
+  become: yes
+  ansible.builtin.file:
+    path: /home/mongodb/
+    state: directory
+- name: Create keyfile
+  become: yes
+  ansible.builtin.command:
+    cmd: openssl rand -base64 756 > /home/mongodb/replicaset-keyfile
+    creates: /home/mongodb/replicaset-keyfile
+- name: Fix permissions for mongodb home folder
+  become: yes
+  ansible.builtin.file:
+    path: /home/mongodb/
+    mode: 700
+    owner: mongodb
+    group: mongodb
+    state: directory

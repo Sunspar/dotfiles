@@ -3,8 +3,8 @@
 # Copy zsh under config
 # change shell to zsh
 - name: Install packages
-  aur:
-    name: zsh
+  yay:
+    packages: zsh
 - name: Copy zshenv file
   ansible.builtin.copy:
     src: zshenv

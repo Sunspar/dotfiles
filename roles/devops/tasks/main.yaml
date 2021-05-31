@@ -1,8 +1,11 @@
 ---
 - name: Install packages
-  aur:
-    name:
-      - iptables        # Firewall support used by Docker
-      - docker          # What if we virtualized the virtualization layer?
-      - lens-bin        # The Kubernetes IDE
-      - remmina         # Remote Desktop
+  yay:
+    packages:
+      - iptables                        # Firewall support used by Docker
+      - docker                          # What if we virtualized the virtualization layer?
+      - lens-bin                        # The Kubernetes IDE
+      - remmina                         # Remote Desktop
+      - azure-cli                       # CLI and Rest Interface for Azure Portal
+      - powershell-bin                  # PowerShell on Linux
+      - 1password-cli                   # 1Password CLI tool

@@ -1,10 +1,10 @@
 ---
 - name: Install packages
-  aur:
-    name:
-      - spotify
-      - spotifyd
-      - spotify-tui
+  yay:
+    packages:
+      - spotify                         # Spotify official client
+      - spotifyd                        # Audio daemon for spotify. Lightweight device you can play tunes from.
+      - spotify-tui                     # Terminal UI frontend for spotifyd. Requires Spotify API key and a premium account to use.
 - name: Ensure user's systemd folder exists
   ansible.builtin.file:
     path: ${HOME}/.config/systemd/user/
@@ -27,3 +27,6 @@
 - name: Start spotifyd on login
   ansible.builtin.command:
     cmd: systemctl --user enable --now spotifyd
+- name: Force restart spotifyd
+  ansible.builtin.command:
+    cmd: systemctl --user restart spotifyd

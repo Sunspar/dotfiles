@@ -1,0 +1,13 @@
+---
+- name: Install packages
+  yay:
+    packages:
+      - picom
+- name: Ensure config folder exists
+  ansible.builtin.file:
+    path: ${HOME}/.config/picom/
+    state: directory
+- name: Copy configuration files
+  ansible.builtin.copy:
+    src: picom.conf
+    dest: ${HOME}/.config/picom/picom.conf

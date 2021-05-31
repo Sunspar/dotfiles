@@ -1,7 +1,8 @@
 ---
 - name: Install packages
-  aur:
-    name:
-      - netctl
-      - iw
-      - wpa_supplicant
+  yay:
+    packages:
+      - networkmanager                  #
+      - networkmanager-openvpn          #
+      - iw                              #
+      - wpa_supplicant                  #

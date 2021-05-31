@@ -1,7 +1,7 @@
 ---
 - name: Install packages
-  aur:
-    name:
+  yay:
+    packages:
       - gnome-keyring
 - name: Setup pam.d login file
   ansible.builtin.copy:

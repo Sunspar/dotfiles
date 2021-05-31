@@ -1,0 +1,5 @@
+---
+- name: Install packages
+  yay:
+    packages:
+      - unzip                           #

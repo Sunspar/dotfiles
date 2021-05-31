@@ -1,9 +1,9 @@
 ---
 - name: Install packages
-  aur:
-    name:
-      - pulseaudio                  #
-      - pulseaudio-alsa             #
-      - pulsemixer                  #
-      - alsa-utils                  #
-      - mpv                         #
+  yay:
+    packages:
+      - pulseaudio                      #
+      - pulseaudio-alsa                 #
+      - pulsemixer                      #
+      - alsa-utils                      #
+      - mpv                             #

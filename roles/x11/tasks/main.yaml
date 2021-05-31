@@ -1,7 +1,7 @@
 ---
 - name: Install packages
-  aur:
-    name:
+  yay:
+    packages:
       - xorg-xrandr                 # Display management
       - arandr                      # GUI management for displays
       - xorg-server                 # Xorg display server

@@ -1,7 +1,7 @@
 ---
 - name: Install font packages
-  aur:
-    name: 
+  yay:
+    packages:
       - ttf-font-awesome
       - ttf-anonymous-pro
       - noto-fonts

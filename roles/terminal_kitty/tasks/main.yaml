@@ -1,7 +1,7 @@
 ---
 - name: Install package
-  aur:
-    name: kitty
+  yay:
+    packages: kitty
 - name: Copy configuration
   ansible.builtin.copy:
     src: kitty/

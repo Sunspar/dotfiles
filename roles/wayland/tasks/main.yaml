@@ -1,15 +1,15 @@
 ---
 - name: Install packages
-  aur:
-    name:
-    - wofi                        # Wayland Launcher (Rofi but without having to run it via XWayland)
-    - wdisplays-git               # GUI controls for display management on wayland compositors
-    - kanshi-git                  # Automatic monitor management for wayland
-    - mako                        # Notifications for wayland
-    - sway-git                    # Sway window manager
-    - wlroots-git                 # 
-    - waybar-git                  # Programmable statusbar for wayland
-    - swaylock-effects-git        # swaylock fork with some cooler effects (lockscreen for wayland)
-    - grim                        # screenshot tool
-    - slurp                       # screen selection tool
-    - swappy-git                  # post-screenshot markup tool
+  yay:
+    packages:
+    - wofi                              # Wayland Launcher (Rofi but without having to run it via XWayland)
+    - wdisplays-git                     # GUI controls for display management on wayland compositors
+    - kanshi-git                        # Automatic monitor management for wayland
+    - mako                              # Notifications for wayland
+    - sway-git                          # Sway window manager
+    - wlroots-git                       # 
+    - waybar-git                        # Programmable statusbar for wayland
+    - swaylock-effects-git              # swaylock fork with some cooler effects (lockscreen for wayland)
+    - grim                              # screenshot tool
+    - slurp                             # screen selection tool
+    - swappy-git                        # post-screenshot markup tool
