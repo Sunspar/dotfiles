@@ -73,7 +73,7 @@ def check_install_packages(module, package_list):
   for package_name in package_list:
     if not is_package_installed(module, package_name):
       packages.append(package_name)
-  diff = dict(before='', after=packages.join(', '))
+  diff = dict(before='', after=', '.join(packages))
   if len(packages) > 0:
     changed = True
     msg = "The following packages would be installed: {}".format(diff['after'])

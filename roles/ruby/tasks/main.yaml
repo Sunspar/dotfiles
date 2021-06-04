@@ -1,0 +1,8 @@
+---
+- name: Manage ruby versions
+  asdf:
+    name: ruby
+    versions:
+      - 2.7.3
+      - 3.0.1
+    global_version: 2.7.3
