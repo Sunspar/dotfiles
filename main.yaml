@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   roles:
+    - ruby
     - mongodb
     - picom
     - audio
@@ -33,12 +34,7 @@
           - google-chrome               # Chrome browser
           - gparted                     # partition manager
           - htop                        # Improved system resource management from a terminal
-          - jdk-openjdk                 # Java development kit
-          - android-sdk                 # Android development toolkit
-          - android-sdk-build-tools     # build tools for android SDK
-          - android-sdk-platform-tools  #
-          - android-emulator            #
-          - android-platform            #
+
           - mariadb                     # MySQL-compatible alternative
           - postgresql                  # PostgreSQL database server software
           - plymouth                    # Splash screen functionality on boot
@@ -53,6 +49,6 @@
           - wrk                         # api/website stress-testing
           - wget                        #
           - curl                        #
-          - flameshot
+          - flameshot                   #
           - emacs                       # The operating system with a built-in text editor!
           - visual-studio-code-bin      # The official VS Code builds from MS
