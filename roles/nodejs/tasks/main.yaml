@@ -1,0 +1,20 @@
+- name: Instal nodejs plugin
+  asdf:
+    name: nodejs
+    versions: []
+- name: install NodeJS GPG keys required prior to installing versions
+  ansible.builtin.command:
+    cmd: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+- name: Insall nodejs versions
+  asdf:
+    name: nodejs
+    global_version: 16.3.0
+    versions:
+      - 16.3.0    # Current (EOL: 2024-04-30)
+      - 14.17.0   # LTS (EOL: 2023-04-30)
+- name: Install yarn plugin and versions
+  asdf:
+    name: yarn
+    global_version: 1.22.10
+    versions:
+      - 1.22.10

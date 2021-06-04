@@ -9,14 +9,16 @@
       - ttf-inconsolata
       - ttf-linux-libertine
       - ttf-unifont
-- name: copy fontconfig dir
-  ansible.builtin.copy:
-    src: fontconfig/
-    dest: ${HOME}/.config/fontconfig/
-- name: copy font files
-  ansible.builtin.copy:
-    src: fonts/
-    dest: ${HOME}/.local/share/fonts/
+- name: fontconfig dir
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/fontconfig"
+    dest: ${HOME}/.config/fontconfig
+- name: font files
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/fonts"
+    dest: ${HOME}/.local/share/fonts
 - name: reset font cache
   ansible.builtin.command:
     cmd: fc-cache -f -v

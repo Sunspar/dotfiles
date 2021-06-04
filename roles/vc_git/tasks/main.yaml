@@ -3,6 +3,7 @@
   yay:
     packages: git
 - name: Copy configuration
-  ansible.builtin.copy:
-    src: git/
-    dest: ${HOME}/.config/git/
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/git"
+    dest: ${HOME}/.config/git

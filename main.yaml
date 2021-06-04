@@ -3,21 +3,28 @@
   hosts: localhost
   connection: local
   roles:
-    - mongodb
-    - picom
     - audio
-    - spotify
-    - security
-    - x11
-    - wm_awesome
-    - fonts
-    - shell_zsh
-    - terminal_kitty
-    - vc_git
-    - terminal_extras
+    - compression
+    - devops
     - editor_neovim
     - filesystems
-    - devops
+    - fonts
+    # - laptops
+    - mongodb
+    - networking
+    - nodejs
+    # - nvidia_proprietary_drivers
+    - picom
+    - ruby
+    - security
+    - shell_zsh
+    - spotify
+    - terminal_extras
+    - terminal_kitty
+    - vc_git
+    # - wayland
+    # - wm_awesome
+    - x11
   tasks:
     - name: Fix resolv.conf so it uses systemd resolvers
       file:
@@ -26,19 +33,14 @@
         state: link
 
     - name: Install unsorted software
-      aur:
-        name:
+      yay:
+        packages:
           - slack-desktop               # slack client for linux
           - firefox                     # Firefox browser
           - google-chrome               # Chrome browser
           - gparted                     # partition manager
           - htop                        # Improved system resource management from a terminal
-          - jdk-openjdk                 # Java development kit
-          - android-sdk                 # Android development toolkit
-          - android-sdk-build-tools     # build tools for android SDK
-          - android-sdk-platform-tools  #
-          - android-emulator            #
-          - android-platform            #
+
           - mariadb                     # MySQL-compatible alternative
           - postgresql                  # PostgreSQL database server software
           - plymouth                    # Splash screen functionality on boot
@@ -53,6 +55,6 @@
           - wrk                         # api/website stress-testing
           - wget                        #
           - curl                        #
-          - flameshot
+          - flameshot                   #
           - emacs                       # The operating system with a built-in text editor!
           - visual-studio-code-bin      # The official VS Code builds from MS

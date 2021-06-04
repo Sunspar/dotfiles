@@ -3,6 +3,7 @@
   yay:
     packages: neovim
 - name: Copy configuration
-  ansible.builtin.copy:
-    src: neovim/
-    dest: ${HOME}/.config/neovim/
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/neovim"
+    dest: ${HOME}/.config/neovim
