@@ -3,22 +3,28 @@
   hosts: localhost
   connection: local
   roles:
-    - ruby
-    - mongodb
-    - picom
     - audio
-    - spotify
-    - security
-    - x11
-    - wm_awesome
-    - fonts
-    - shell_zsh
-    - terminal_kitty
-    - vc_git
-    - terminal_extras
+    - compression
+    - devops
     - editor_neovim
     - filesystems
-    - devops
+    - fonts
+    # - laptops
+    - mongodb
+    - networking
+    - nodejs
+    # - nvidia_proprietary_drivers
+    - picom
+    - ruby
+    - security
+    - shell_zsh
+    - spotify
+    - terminal_extras
+    - terminal_kitty
+    - vc_git
+    # - wayland
+    # - wm_awesome
+    - x11
   tasks:
     - name: Fix resolv.conf so it uses systemd resolvers
       file:
@@ -27,8 +33,8 @@
         state: link
 
     - name: Install unsorted software
-      aur:
-        name:
+      yay:
+        packages:
           - slack-desktop               # slack client for linux
           - firefox                     # Firefox browser
           - google-chrome               # Chrome browser

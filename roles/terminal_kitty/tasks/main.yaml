@@ -3,6 +3,7 @@
   yay:
     packages: kitty
 - name: Copy configuration
-  ansible.builtin.copy:
-    src: kitty/
-    dest: ${HOME}/.config/kitty/
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/kitty"
+    dest: ${HOME}/.config/kitty

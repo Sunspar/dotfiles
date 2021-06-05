@@ -5,9 +5,10 @@
       - picom
 - name: Ensure config folder exists
   ansible.builtin.file:
-    path: ${HOME}/.config/picom/
     state: directory
+    path: ${HOME}/.config/picom/
 - name: Copy configuration files
-  ansible.builtin.copy:
-    src: picom.conf
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/picom.conf"
     dest: ${HOME}/.config/picom/picom.conf

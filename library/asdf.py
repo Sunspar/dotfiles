@@ -131,6 +131,10 @@ def install(module):
     rc, out, err = module.run_command(global_command, check_rc=True)
     # TODO: Only flag this change if the version has actually changed.
     results['changed'] = True
+
+  # Make sure to reshim so that your changes are instantly usable.
+  if results['changed']:
+    rc, out, err = module.run_command(['asdf', 'reshim', plugin_name], check_rc=True)
   
   module.exit_json(**results)
 

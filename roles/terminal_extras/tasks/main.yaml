@@ -1,5 +1,6 @@
 ---
 - name: Copy configuration
-  ansible.builtin.copy:
-    src: terminal/
-    dest: ${HOME}/.terminal/
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/terminal"
+    dest: ${HOME}/.terminal
