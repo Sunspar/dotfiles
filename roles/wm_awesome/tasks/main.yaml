@@ -6,10 +6,20 @@
       - rofi                            #
       - picom                           #
 - name: copy awesome config
-  copy:
-    src: awesome/
-    dest: ${HOME}/.config/awesome/
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/awesome"
+    dest: ${HOME}/.config/awesome
 - name: Copy rofi config
   ansible.builtin.copy:
     src: rofi/
     dest: ${HOME}/.config/rofi/
+- name: Ensure picom config exists
+  ansible.builtin.file:
+    state: directory
+    path: ${HOME}/.config/picom/
+- name: picom config file
+  ansible.builtin.file:
+    state: link
+    src: "{{ role_path }}/files/picom/picom.conf"
+    dest: ${HOME}/.config/picom/picom.conf

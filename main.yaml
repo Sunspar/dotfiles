@@ -10,11 +10,10 @@
     - filesystems
     - fonts
     # - laptops
-    - mongodb
+    - mongodb (Breaks on the keyfile generation)
     - networking
     - nodejs
     # - nvidia_proprietary_drivers
-    - picom
     - ruby
     - security
     - shell_zsh
@@ -23,10 +22,11 @@
     - terminal_kitty
     - vc_git
     # - wayland
-    # - wm_awesome
+    - wm_awesome
     - x11
   tasks:
     - name: Fix resolv.conf so it uses systemd resolvers
+      become: yes
       file:
         src: /run/systemd/resolve/stub-resolv.conf
         dest: /etc/resolv.conf

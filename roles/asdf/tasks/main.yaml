@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  yay:
+    packages:
+      - curl
+      - git
+- name: Setup ASDF
+  ansible.builtin.command:
+    cmd: git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.1
+    creates: $HOME/.asdf
