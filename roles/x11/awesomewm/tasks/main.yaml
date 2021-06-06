@@ -5,12 +5,12 @@
       - awesome-git                     #
       - rofi                            #
       - picom                           #
-- name: copy awesome config
+- name: link awesome configuration
   ansible.builtin.file:
     state: link
     src: "{{ role_path }}/files/awesome"
     dest: ${HOME}/.config/awesome
-- name: Copy rofi config
+- name: link rofi configuration
   ansible.builtin.copy:
     src: rofi/
     dest: ${HOME}/.config/rofi/
@@ -18,7 +18,7 @@
   ansible.builtin.file:
     state: directory
     path: ${HOME}/.config/picom/
-- name: picom config file
+- name: link picom configuration
   ansible.builtin.file:
     state: link
     src: "{{ role_path }}/files/picom/picom.conf"

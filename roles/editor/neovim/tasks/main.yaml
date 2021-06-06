@@ -2,7 +2,7 @@
 - name: Install package
   yay:
     packages: neovim
-- name: Copy configuration
+- name: link neovim configuration
   ansible.builtin.file:
     state: link
     src: "{{ role_path }}/files/neovim"

@@ -3,6 +3,19 @@
   hosts: localhost
   connection: local
   roles:
+    - shell-zsh
+    - compression
+    - terminal-extras
+    - vcs/git
+    - x11/core
+    - x11/awesomewm
+    - core/audio
+    - core/filesystems
+    - core/fonts
+    - core/networking
+    - core/security
+    - apps/spotify
+    - apps/kitty
     - language/crystal
     - language/dart
     - language/dotnet-core
@@ -10,25 +23,12 @@
     - language/ruby
     - framework/flutter
     - editor/neovim
-    # - laptops/power
-    # - nvidia/proprietary-drivers
     - devops
     - devops/kubernetes
-    - core/audio
-    - core/filesystems
-    - core/fonts
-    - core/networking
-    - core/security
+    # - laptops/power
+    # - nvidia/proprietary-drivers
     # - apps/mongodb
-    - apps/spotify
-    - apps/kitty
-    - compression
-    - shell-zsh
-    - terminal-extras
-    - vcs/git
     # - wayland
-    - x11/core
-    - x11/awesomewm
   tasks:
     - name: Fix resolv.conf so it uses systemd resolvers
       become: yes

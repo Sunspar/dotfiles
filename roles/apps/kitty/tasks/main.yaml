@@ -1,8 +1,8 @@
 ---
-- name: Install package
+- name: Install packages
   yay:
     packages: kitty
-- name: Copy configuration
+- name: link kitty configuration
   ansible.builtin.file:
     state: link
     src: "{{ role_path }}/files/kitty"
