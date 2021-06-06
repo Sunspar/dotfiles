@@ -1,0 +1,7 @@
+---
+- name: Manage versions
+  asdf:
+    name: flutter
+    global_version: 2.2.1
+    versions:
+      - 2.2.1

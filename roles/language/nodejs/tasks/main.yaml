@@ -10,8 +10,8 @@
     name: nodejs
     global_version: 16.3.0
     versions:
-      - 16.3.0    # Current (EOL: 2024-04-30)
       - 14.17.0   # LTS (EOL: 2023-04-30)
+      - 16.3.0    # Current (EOL: 2024-04-30)
 - name: Install yarn plugin and versions
   asdf:
     name: yarn

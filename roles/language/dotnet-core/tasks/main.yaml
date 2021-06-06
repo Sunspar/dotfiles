@@ -1,0 +1,7 @@
+---
+- name: Manage versions
+  asdf:
+    name: dotnet-core
+    global_version: 3.1.15
+    versions:
+      - 3.1.15

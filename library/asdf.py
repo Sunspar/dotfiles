@@ -114,16 +114,20 @@ def install(module):
   }
 
   if not plugin_installed(module, plugin_name):
-    install_command = ['asdf', 'plugin-add', name]
+    install_command = ['asdf', 'plugin-add', plugin_name]
     if plugin_repository:
       install_command.append(plugin_repository)
     rc, out, err = module.run_command(install_command, check_rc=True)
+    if rc:
+      module.fail_json(changed=False, msg=err)
     results['changed'] = True
 
   for version in plugin_versions:
     if not version_installed(module, plugin_name, version):
       version_install_command = ['asdf', 'install', plugin_name, version]
       rc, out, err = module.run_command(version_install_command, check_rc=True)
+      if rc:
+        module.fail_json(changed=results['changed'], msg=err)
       results['changed'] = True
 
   if global_version != None:

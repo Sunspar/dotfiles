@@ -1,0 +1,7 @@
+---
+- name: Manage versions
+  asdf:
+    name: crystal
+    global_version: 1.0.0
+    versions:
+      - 1.0.0

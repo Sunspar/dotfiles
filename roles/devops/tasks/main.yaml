@@ -2,25 +2,7 @@
 - name: Install packages
   yay:
     packages:
-      - iptables                        # Firewall support used by Docker
-      - docker                          # What if we virtualized the virtualization layer?
-      - lens-bin                        # The Kubernetes IDE
       - remmina                         # Remote Desktop
       - azure-cli                       # CLI and Rest Interface for Azure Portal
       - powershell-bin                  # PowerShell on Linux
       - 1password-cli                   # 1Password CLI tool
-- name: Manage kubectl versions
-  asdf:
-    name: kubectl
-    versions:
-      - 1.18.19
-      - 1.19.11
-      - 1.20.7
-    global_version: 1.20.7
-- name: Manage helm versions
-  asdf:
-    name: helm
-    versions:
-      - 3.5.4
-      - 3.6.0
-    global_version: 3.6.0

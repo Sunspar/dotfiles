@@ -1,7 +1,9 @@
 ---
 - name: Install package
   yay:
-    packages: git
+    packages:
+      - git                             # The One True VCS
+      - gitui-git                      # Terminal UI for interacting with Git repositories
 - name: Copy configuration
   ansible.builtin.file:
     state: link
