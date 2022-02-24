@@ -1,0 +1,10 @@
+- name: build dependencies
+  apt:
+    package:
+      - curl
+      - git
+
+- name: asdf is present
+  ansible.builtin.command:
+    creates: $HOME/.asdf
+    cmd: git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0

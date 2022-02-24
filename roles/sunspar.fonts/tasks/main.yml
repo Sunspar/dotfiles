@@ -1,0 +1,2 @@
+- name: load os-specific tasks
+  include_tasks: "_{{ ansible_facts['os_family'] }}.yml"

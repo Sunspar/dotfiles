@@ -1,0 +1,15 @@
+- name: install spotify cask
+  community.general.homebrew_cask:
+    path: "/opt/homebrew/bin"
+    state: present
+    upgrade_all: no
+    name:
+      - spotify
+
+- name: install spotifyd
+  community.general.homebrew:
+    path: "/opt/homebrew/bin"
+    state: present
+    upgrade_all: no
+    name:
+      - spotifyd

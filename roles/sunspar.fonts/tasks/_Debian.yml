@@ -1,0 +1,9 @@
+- name: Install fonts
+  loop: "{{ fonts }}"
+  copy:
+    src: "{{ font_dir }}/{{ item }}"
+    dest: "${HOME}/.local/share/fonts"
+
+- name: reset font cache
+  ansible.builtin.command:
+    cmd: fc-cache -f -v

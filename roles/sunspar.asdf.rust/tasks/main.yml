@@ -1,0 +1,7 @@
+- name: ensure versions are installed
+  sunspar.asdf:
+    name: "rust" 
+    state: "present"
+    asdf_path: "/opt/homebrew/Cellar/asdf/0.9.0/libexec/bin/asdf"
+    global_version: "{{ versions[0] }}"
+    versions: "{{ versions }}"

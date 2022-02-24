@@ -1,0 +1,15 @@
+- name: ensure versions are installed
+  sunspar.asdf:
+    name: "ruby" 
+    state: "present"
+    asdf_path: "/opt/homebrew/Cellar/asdf/0.9.0/libexec/bin/asdf"
+    global_version: "{{ versions[0] }}"
+    versions: "{{ versions }}"
+
+- name: install gems
+  # lets us ensure that all gems are present for each version of ruby being managed.
+  loop: "{{ versions | product(gems) | list }}"
+  environment:
+    ASDF_RUBY_VERSION: "{{ item[0] }}"
+  community.general.gem:
+    name: "{{ item[1] }}"

@@ -1,0 +1,5 @@
+- name: Install fonts
+  loop: "{{ fonts }}"
+  copy:
+    src: "{{ font_dir }}/{{ item }}"
+    dest: "/Users/{{ username }}/Library/Fonts/{{ item }}"

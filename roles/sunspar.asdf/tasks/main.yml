@@ -1,0 +1,11 @@
+- name: Ensure asdf is installed
+  include_tasks: "_{{ ansible_facts['os_family'] }}.yml"
+
+# - name: specified are installed
+#   loop: "{{ plugins }}"
+#   sunspar.asdf:
+#     asdf_path: "{{ asdf_path }}"
+#     name: "{{ item.name }}"
+#     state: present
+#     global_version: "{{ item.global_version }}"
+#     versions: "{{ item.versions }}"

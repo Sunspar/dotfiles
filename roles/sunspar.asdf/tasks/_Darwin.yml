@@ -1,0 +1,6 @@
+- name: ensure asdf is installed in M1 homebrew
+  community.general.homebrew:
+    path: "/opt/homebrew/bin"
+    name: asdf
+    state: present
+    upgrade_all: no

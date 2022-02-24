@@ -1,0 +1,7 @@
+- name: load os-specific tasks
+  include_tasks: "_{{ ansible_facts['os_family'] }}.yml"
+
+- name: configuration file
+  template:
+    src: 'spotifyd-config.j2'
+    dest: "${HOME}/.config/spotifyd"

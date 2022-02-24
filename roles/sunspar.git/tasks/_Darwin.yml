@@ -1,0 +1,17 @@
+- name: Install packages
+  community.general.homebrew:
+    path: "/opt/homebrew/bin"
+    state: present
+    upgrade_all: no
+    name:
+      - git
+
+- name: gitconfig
+  copy:
+    src: gitconfig
+    dest: "${HOME}/.gitconfig"
+
+- name: gitignore
+  copy:
+    src: gitignore
+    dest: "${HOME}/.gitignore"

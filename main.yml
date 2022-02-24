@@ -1,0 +1,89 @@
+---
+- hosts: all
+  roles:
+    - role: "sunspar.asdf"
+    - role: "sunspar.asdf.ruby"
+      versions: [ "2.7.3", "3.0.1" ]
+      gems: [ "bundler" ]
+    - role: "sunspar.asdf.dart"
+      versions: [ "2.13.1" ]
+    - role: "sunspar.asdf.flutter"
+      versions: [ "2.2.1" ]
+    - role: "sunspar.asdf.rust"
+      versions: [ "1.59.0" ]
+      crates: []
+    - role: "sunspar.asdf.helm"
+      versions: [ "3.6.0" ]
+    - role: "sunspar.asdf.yarn"
+      versions: [ "1.22.10" ]
+      packages: []
+    - role: "sunspar.fonts"
+      username: sunspar
+      font_dir: "{{ playbook_dir }}/files/sunspar.fonts"
+      fonts:
+        - DejaVu Sans Mono for Powerline.ttf
+        - Fira Code Mono.ttf
+        - Fira Code Retina Nerd Font Complete Mono.otf
+        - Font Awesome 5 Brands-Regular-400.otf
+        - Font Awesome 5 Duotone-Solid-900.otf
+        - Font Awesome 5 Pro-Light-300.otf
+        - Font Awesome 5 Pro-Regular-400.otf
+        - Font Awesome 5 Pro-Solid-900.otf
+        - MesloLGS NF Bold Italic.ttf
+        - MesloLGS NF Bold.ttf
+        - MesloLGS NF Italic.ttf
+        - MesloLGS NF Regular.ttf
+        - all-the-icons.ttf
+        - file-icons.ttf
+        - fontawesome.ttf
+        - material-design-icons.ttf
+        - octicons.ttf
+        - weathericons.ttf
+    - role: "sunspar.spotify"
+      username: sunspar
+    - role: "sunspar.git"
+  tasks:
+    - name: Assorted packages that havent been categorized yet
+      when: ansible_facts['os_family'] == "Darwin"
+      community.general.homebrew:
+        path: "/opt/homebrew/bin"
+        state: present
+        upgrade_all: no
+        name:
+          # ops tools
+          - azcopy
+          - azure-cli
+          - azure/kubelogin/kubelogin
+          - terraform
+          - doctl
+          - pulumi
+          - pulumi/tap/tf2pulumi
+          - podman
+          - telnet
+          - speedtest-cli
+          # dev tools
+          - git
+          - gnupg
+          - cloc
+          - jq
+          - wrk
+          # unsorted
+          - mongodb/brew/mongodb-community
+          - bash
+          - ffmpeg
+          - htop
+          - httpd
+          - instantclienttap/instantclient/instantclient-sqlplus
+          - kind
+          - libiconv
+          - libvterm
+          - libxslt
+          - llvm
+          - llvm@11
+          - lua
+          - mysql@5.7
+          - neovim
+          - openssl@3
+          - postgresql
+          - redis
+          - trash-cli

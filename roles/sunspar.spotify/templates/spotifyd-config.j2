@@ -1,0 +1,22 @@
+# See: https://spotifyd.github.io/spotifyd/config/File.html
+
+[global]
+username = "{{ username }}"
+use_keyring = true
+use_mpris = false
+device_name = "spotifyd"
+bitrate = 320
+cache_path = "cache_directory"
+volume_normalisation = true
+normalisation_pregain = -10
+device_type = "speaker"
+
+{% if ansible_facts['os_family'] == "Darwin" %}
+backend = "portaudio"
+volume_controller = "softvol"
+{% elif ansible_facts['os_family'] == "Debian" %}
+backend = "pulseaudio"
+mixer = "PCM"
+volume-controller = "alsa" # or alsa_linear, or softvol
+# device = "sysdefault" # Given by `aplay -L`, can also change it to always push to a specific device
+{% endif %}
